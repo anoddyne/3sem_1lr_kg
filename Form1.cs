@@ -23,8 +23,6 @@ namespace _3sem_1lr_kg
         {
             Graphics g = CreateGraphics();
             g.Clear(Color.LightSkyBlue);
-
-
             // g.DrawEllipse(Pens.Red, 100, 100, 300, 200);
             // g.DrawRectangle(Pens.Red, 100, 100, 300, 200);
             // g.DrawLine(Pens.Red, 100, 100, 300, 300);
@@ -37,7 +35,9 @@ namespace _3sem_1lr_kg
             e.Graphics.FillEllipse(whiteBrush, 16, 41, 22, 12);
             e.Graphics.FillEllipse(whiteBrush, 21, 31, 27, 17);
 
+            //земля и солнце
             g.FillRectangle(Brushes.Green, 0, 350, 800, 120);
+            g.FillEllipse(Brushes.Yellow, 50, 50, 50, 50);
 
             Point house_1 = new Point(200, 380);
             Point house_2 = new Point(600, 380);
