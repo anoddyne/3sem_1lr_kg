@@ -18,6 +18,7 @@ namespace _3sem_1lr_kg
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
     }
 }
