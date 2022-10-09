@@ -20,15 +20,40 @@ namespace _3sem_1lr_kg
             this.Width = 800;
             this.Height = 500;
         }
-        //Graphics g;
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-              
+            Timer timer = new Timer();
+            timer.Interval = 1000; // каждые 30 миллисекунд
+            int count = 0;
+            int max = 1000;
+            Graphics g = this.CreateGraphics();
+            g.Clear(Color.SkyBlue);
+            int x = 10;
+            int y = 10;
+            //g.DrawEllipse(Pens.Yellow, x, y, 100, 100);
+            timer.Tick += new EventHandler((o, ev) =>
+            {
+                x += 5;
+                y += 5;
+                g.Clear(Color.SkyBlue);
+                g.FillEllipse(Brushes.Yellow, x, y, 100, 100);
+                count++;
+                DoubleBuffered = true;
+                if (count == max)
+                {
+                    Timer t = o as Timer; // можно тут просто воспользоваться timer
+                    t.Stop();
+                }
+                
+            });
+            timer.Start();   // запустили, а остановится он сам  
+            
+
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            
             Graphics g = CreateGraphics();
             g.Clear(Color.LightSkyBlue);
             // g.DrawEllipse(Pens.Red, 100, 100, 300, 200);
@@ -94,40 +119,6 @@ namespace _3sem_1lr_kg
             g.DrawPolygon(Pens.DarkSlateBlue, window);
 
             timer1.Enabled = true;
-
-        }
-
-        
-
-        private void Form1_Click(object sender, EventArgs e)
-        {
-            Timer timer = new Timer();
-            timer.Interval = 1; // каждые 30 миллисекунд
-            int count = 0;
-            int max = 10;
-            Graphics g = this.CreateGraphics();
-            g.Clear(Color.SkyBlue);
-            int x = 10;
-            int y = 10;
-            g.DrawEllipse(Pens.Black, x, y, 10, 10);
-            timer.Tick += new EventHandler((o, ev) =>
-            {
-                x += 5;
-                y += 5;
-                //g.Clear(Color.White);
-                g.DrawEllipse(Pens.Black, x, y, 10, 10);
-                count++;
-
-                if (count == max)
-                {
-                    Timer t = o as Timer; // можно тут просто воспользоваться timer
-                    t.Stop();
-                }
-            });
-            timer.Start();   // запустили, а остановится он сам  
-
-
-
-        }
+            }
     }
 }
