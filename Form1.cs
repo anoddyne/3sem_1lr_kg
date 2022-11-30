@@ -24,7 +24,6 @@ namespace _3sem_1lr_kg
             timer1.Start();
         }
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
@@ -83,6 +82,7 @@ namespace _3sem_1lr_kg
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            
             Graphics g = CreateGraphics();
             
             //земля
