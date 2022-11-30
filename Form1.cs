@@ -8,46 +8,87 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _3sem_1lr_kg
 {
 
     public partial class Form1 : Form
     {
+        int count = 0;
         public Form1()
         {
             InitializeComponent();
             this.Width = 800;
             this.Height = 500;
+            timer1.Start();
         }
-        //Graphics g;
 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-              
+            Graphics g = CreateGraphics();
+            count++;
+            if (count == 1) {
+                g.FillEllipse(Brushes.Yellow, 50, 50, 50, 50);
+            }
+            if (count == 11)
+            {
+                g.FillEllipse(Brushes.LightSkyBlue, 50, 50, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 160, 35, 50, 50);
+
+            }
+            if (count == 21)
+            {
+                g.FillEllipse(Brushes.LightSkyBlue, 160, 35, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 250, 20, 50, 50);
+            }
+            if (count == 31)
+            {
+                g.FillEllipse(Brushes.LightSkyBlue, 250, 20, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 350, 15, 50, 50);
+            }            
+            if (count == 40)
+            {
+                BackColor = Color.Plum;
+            }
+            if(count == 41)
+            {
+                g.FillEllipse(Brushes.Plum, 350, 15, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 450, 20, 50, 50);
+            }
+            if(count == 50)
+            {
+                BackColor = Color.MediumPurple;
+            }
+            if (count == 51)
+            {
+                g.FillEllipse(Brushes.MediumPurple, 450, 20, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 550, 35, 50, 50);
+            }
+            if (count == 60)
+            {
+                BackColor = Color.SlateBlue;
+            }
+            if (count == 61)
+            {
+                g.FillEllipse(Brushes.SlateBlue, 550, 35, 50, 50);
+                g.FillEllipse(Brushes.Yellow, 650, 50, 50, 50);
+            }
+            if (count == 71)
+            {
+                BackColor = Color.DarkSlateBlue;
+                g.FillEllipse(Brushes.DarkSlateBlue, 650, 50, 50, 50);
+            }
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
-            g.Clear(Color.LightSkyBlue);
-            // g.DrawEllipse(Pens.Red, 100, 100, 300, 200);
-            // g.DrawRectangle(Pens.Red, 100, 100, 300, 200);
-            // g.DrawLine(Pens.Red, 100, 100, 300, 300);
-            /*Pen myPen = new Pen(Color.Black, 3);
-            SolidBrush whiteBrush = new SolidBrush(Color.White);
-            e.Graphics.DrawEllipse(myPen, 20, 30, 30, 20);
-            e.Graphics.DrawEllipse(myPen, 15, 40, 25, 15);
-            e.Graphics.DrawEllipse(myPen, 10, 50, 20, 10);
-            e.Graphics.FillEllipse(whiteBrush, 11, 51, 17, 7);
-            e.Graphics.FillEllipse(whiteBrush, 16, 41, 22, 12);
-            e.Graphics.FillEllipse(whiteBrush, 21, 31, 27, 17);*/
-
-
-            //земля и солнце
+            
+            //земля
             g.FillRectangle(Brushes.Green, 0, 350, 800, 120);
-            g.FillEllipse(Brushes.Yellow, 50, 50, 50, 50);
 
+            //дом
             Point house_1 = new Point(200, 380);
             Point house_2 = new Point(600, 380);
             Point house_3 = new Point(600, 200);
@@ -77,7 +118,7 @@ namespace _3sem_1lr_kg
 
             //ручка двери
             g.FillEllipse(Brushes.Black, 290, 325, 13, 13);
-            
+
             // окно
             Point window_1 = new Point(400, 250); //x1y1
             Point window_2 = new Point(550, 250); //x2y2
@@ -90,44 +131,10 @@ namespace _3sem_1lr_kg
                 window_3,
                 window_4
             };
+
+            //окно
             g.FillPolygon(Brushes.LightSteelBlue, window);
             g.DrawPolygon(Pens.DarkSlateBlue, window);
-
-            timer1.Enabled = true;
-
-        }
-
-        
-
-        private void Form1_Click(object sender, EventArgs e)
-        {
-            Timer timer = new Timer();
-            timer.Interval = 1; // каждые 30 миллисекунд
-            int count = 0;
-            int max = 10;
-            Graphics g = this.CreateGraphics();
-            g.Clear(Color.SkyBlue);
-            int x = 10;
-            int y = 10;
-            g.DrawEllipse(Pens.Black, x, y, 10, 10);
-            timer.Tick += new EventHandler((o, ev) =>
-            {
-                x += 5;
-                y += 5;
-                //g.Clear(Color.White);
-                g.DrawEllipse(Pens.Black, x, y, 10, 10);
-                count++;
-
-                if (count == max)
-                {
-                    Timer t = o as Timer; // можно тут просто воспользоваться timer
-                    t.Stop();
-                }
-            });
-            timer.Start();   // запустили, а остановится он сам  
-
-
-
         }
     }
 }
